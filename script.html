@@ -22,7 +22,20 @@
         }
         }
 
+        function getHumanChoice() {
+
+            let HumanChoice = prompt("make yo move - rock, paper, or scissors?").toLowerCase();
+
+            while (HumanChoice !== "rock" && HumanChoice !== "paper" && HumanChoice !== "scissors") {
+                HumanChoice = prompt("pick again b - has to be rock, paper, or scissors").toLowerCase();
+            }
+
+            return HumanChoice;
+
+        }
+
         console.log(getComputerChoice());
+        console.log(getHumanChoice());
 
 
     </script>
