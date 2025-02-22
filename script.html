@@ -7,35 +7,92 @@
 </head>
 <body>
     <script>
+
+        let humanScore = 0;
+        let computerScore = 0;
+
         function getComputerChoice() {
 
             const randomNumber = Math.floor(Math.random() * 3);
 
-        if (randomNumber === 0) {
-            return "rock";
+            if (randomNumber === 0) {
+                return "rock";
 
-        } else if (randomNumber === 1) {
-            return "paper";
+            } else if (randomNumber === 1) {
+                return "paper";
 
-        } else {
-            return "scissors";
-        }
+            } else {
+                return "scissors";
+            }
         }
 
         function getHumanChoice() {
 
-            let HumanChoice = prompt("make yo move - rock, paper, or scissors?").toLowerCase();
+            let humanChoice = prompt("make your move - rock, paper, or scissors?").toLowerCase();
 
-            while (HumanChoice !== "rock" && HumanChoice !== "paper" && HumanChoice !== "scissors") {
-                HumanChoice = prompt("pick again b - has to be rock, paper, or scissors").toLowerCase();
+            while (humanChoice !== "rock" && humanChoice !== "paper" && humanChoice !== "scissors") {
+                humanChoice = prompt("pick again - has to be rock, paper, or scissors").toLowerCase();
             }
 
-            return HumanChoice;
+            return humanChoice;
 
         }
 
-        console.log(getComputerChoice());
-        console.log(getHumanChoice());
+        // console.log(getComputerChoice());
+        // console.log(getHumanChoice());
+
+        function playRound(humanChoice,computerChoice) {
+            
+            // let ComputerChoice = getComputerChoice();
+
+            if (humanChoice === computerChoice) {
+                console.log("same same, it's a tie");
+                return;
+            
+            } else if
+                ((humanChoice === "rock" && computerChoice === "scissors") ||
+                (humanChoice === "scissors" && computerChoice === "paper") ||
+                (humanChoice === "paper" && computerChoice === "rock")) {
+
+                humanScore++;
+                console.log(`${humanChoice} beats ${computerChoice}, you win!`);
+
+            } else {
+                computerScore++;
+                console.log(`${computerChoice} beats ${humanChoice}, sorry you lose :(`);
+            }
+
+            console.log(`current scores - you are at ${humanScore}, the NPC you're playing is at ${computerScore}`);
+            }
+
+        const computerChoice = getComputerChoice();
+        const humanChoice = getHumanChoice();
+        playRound(humanChoice, computerChoice);
+
+
+
+            // } else if (HumanChoice === "rock" && ComputerChoice === "scissors") {
+            //     return "rock beats scissors, you win!";
+
+            // } else if (HumanChoice === "rock" && ComputerChoice === "paper") {
+            //     return "paper beats rock sozzz you lose";
+
+            // } else if (HumanChoice === "scissors" && ComputerChoice === "rock") {
+            //     return "rock beats scissors sozzz you lose";
+
+            // } else if (HumanChoice === "scissors" && ComputerChoice === "paper") {
+            //     return "scissors beats paper, you win!";
+
+            // } else if (HumanChoice === "paper" && ComputerChoice === "rock") {
+            //     return "paper beats rock, you win!";
+            
+            // } if (HumanChoice === "paper" && ComputerChoice === "scissors") {
+            //     return "scissors beats paper sozzz you lose";
+
+            
+
+            
+        
 
 
     </script>
