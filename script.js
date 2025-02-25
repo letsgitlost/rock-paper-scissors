@@ -12,6 +12,8 @@ function playRound (playerSelection) {
   const computerChoice = getComputerChoice();
   const resultsDiv = document.getElementById('results');
 
+  resultsDiv.innerHTML = `you chose ${playerSelection}, <br> computer chose ${computerChoice} <br>`;
+
   if (playerSelection === computerChoice) {
     resultsDiv.textContent = "same same, it's a tie";
   
