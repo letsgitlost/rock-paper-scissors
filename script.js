@@ -5,9 +5,29 @@ function getComputerChoice() {
   return choices[randomNumber];
 }
 
-function playRound (humanChoice)
+function playRound (playerSelection) {
   const computerChoice = getComputerChoice();
   const resultsDiv = document.getElementById('results');
+
+  if (playerSelection === computerChoice) {
+    resultsDiv.textContent = "same same, it's a tie";
+  
+  } else if (
+    (playerSelection === "rock" && computerChoice === "scissors") ||
+    (playerSelection === "scissors" && computerChoice === "paper") ||
+    (playerSelection === "paper" && computerChoice === "rock")
+
+  ) {
+    resultsDiv.textContent = `${playerSelection} beats ${computerChoice}, you win!`;
+    playerScore++;
+
+  } else {
+    resultsDiv.textContent = `${computerChoice} beats ${playerSelection}, sorry you lose :(`;
+    computerScore++;
+  }
+
+  updateScore();
+}
 
         // function getHumanChoice() {
 
@@ -28,23 +48,7 @@ function playRound (humanChoice)
 
         //     function playRound(humanChoice,computerChoice) {
 
-        //         if (humanChoice === computerChoice) {
-        //             console.log("same same, it's a tie");
-        //             return;
                 
-        //         } else if
-        //             ((humanChoice === "rock" && computerChoice === "scissors") ||
-        //             (humanChoice === "scissors" && computerChoice === "paper") ||
-        //             (humanChoice === "paper" && computerChoice === "rock")) {
-
-        //             humanScore++;
-        //             console.log(`${humanChoice} beats ${computerChoice}, you win!`);
-
-        //         } else {
-        //             computerScore++;
-        //             console.log(`${computerChoice} beats ${humanChoice}, sorry you lose :(`);
-        //         }
-
         //     }
 
         //     // const gameRounds = 5;
