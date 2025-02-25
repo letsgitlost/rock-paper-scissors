@@ -1,3 +1,6 @@
+let playerScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
 
   const choices = ['rock', 'paper', 'scissors'];
@@ -27,6 +30,28 @@ function playRound (playerSelection) {
   }
 
   updateScore();
+}
+
+function updateScore() {
+  document.getElementById('player-score').textContent = playerScore;
+  document.getElementById('computer-score').textContent = computerScore;
+
+  if (playerScore >= 5) {
+    document.getElementById('results').textContent = "game over! you win :)";
+    resetGame();
+    
+  } else if (computerScore >= 5) {
+    document.getElementById('results').textContent = "game over! you lose :(";
+    resetGame();
+  }
+}
+
+function resetGame() {
+  playerScore = 0;
+  computerScore = 0;
+  
+  // Optional: delay the score reset display to let the player see the final score
+  setTimeout(() => updateScore(), 3000);
 }
 
         // function getHumanChoice() {
