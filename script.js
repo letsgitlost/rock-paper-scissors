@@ -39,49 +39,32 @@ function updateScore() {
   document.getElementById('computer-score').textContent = computerScore;
 
   if (playerScore >= 5) {
-    document.getElementById('results').textContent = "game over! you win :)";
-    resetGame();
-    
+    announceWinner("You");
   } else if (computerScore >= 5) {
-    document.getElementById('results').textContent = "game over! you lose :(";
-    resetGame();
+    announceWinner("Computer");
   }
 }
 
-//  Optional code to declare an announceWinner function instead of separate messages
-//  if (playerScore >= 5) {
-//     announceWinner("You");
-//   } else if (computerScore >= 5) {
-//     announceWinner("Computer");
-//   }
-// }
+function announceWinner(winner) {
+  const resultsDiv = document.getElementById('results');
+  resultsDiv.innerHTML += `<br><strong>game over! ${winner} win the match!</strong>`;
 
-// function announceWinner(winner) {
-//   const resultsDiv = document.getElementById('results');
-//   resultsDiv.innerHTML += `<br><strong>Game over! ${winner} wins the match!</strong>`;
-
-// setButtonsEnabled(false);
+  setButtonsEnabled(false);
   
-// setTimeout(() => {
-//   playerScore = 0;
-//   computerScore = 0;
-//   updateScore();
-//   resultsDiv.textContent = "New game! Choose rock, paper, or scissors.";
-//   setButtonsEnabled(true);
-// }, 3000);
-// }
-// function setButtonsEnabled(enabled) {
-//     const buttons = document.querySelectorAll('#buttons button');
-//     buttons.forEach(button => {
-//       button.disabled = !enabled;
-//     });
-//   }
+  setTimeout(() => {
+    playerScore = 0;
+    computerScore = 0;
+    updateScore();
+    resultsDiv.textContent = "another game? choose rock, paper, or scissors";
+    setButtonsEnabled(true);
+  }, 3000);
+}
 
-function resetGame() {
-  playerScore = 0;
-  computerScore = 0;
-  
-  setTimeout(() => updateScore(), 3000);
+function setButtonsEnabled(enabled) {
+  const buttons = document.querySelectorAll('#buttons button');
+  buttons.forEach(button => {
+    button.disabled = !enabled;
+  });
 }
 
 window.addEventListener('DOMContentLoaded', () => {
